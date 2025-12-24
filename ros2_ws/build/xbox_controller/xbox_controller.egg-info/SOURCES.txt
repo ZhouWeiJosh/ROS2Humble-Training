@@ -1,0 +1,13 @@
+package.xml
+setup.cfg
+setup.py
+resource/xbox_controller
+xbox_controller/__init__.py
+xbox_controller/joynode_subscriber.py
+xbox_controller.egg-info/PKG-INFO
+xbox_controller.egg-info/SOURCES.txt
+xbox_controller.egg-info/dependency_links.txt
+xbox_controller.egg-info/entry_points.txt
+xbox_controller.egg-info/requires.txt
+xbox_controller.egg-info/top_level.txt
+xbox_controller.egg-info/zip-safe

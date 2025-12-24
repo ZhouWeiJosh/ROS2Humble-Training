@@ -1,0 +1,3 @@
+[console_scripts]
+joynode_subscriber = joynode_subscriber.py
+
