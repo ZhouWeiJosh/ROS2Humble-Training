@@ -1,3 +1,0 @@
-[console_scripts]
-joynode_subscriber = xbox_controller.joynode_subscriber:main
-
