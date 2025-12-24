@@ -1,1 +1,0 @@
-/home/jorda/ROS2Humble-Training/ros2_ws/src/xbox_controller/setup.py
