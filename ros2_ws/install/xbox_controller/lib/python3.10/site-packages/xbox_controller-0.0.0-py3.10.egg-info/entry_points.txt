@@ -1,0 +1,4 @@
+[console_scripts]
+joy = xbox_controller.joy:main
+xbox_reader = xbox_controller.xbox_reader:main
+
