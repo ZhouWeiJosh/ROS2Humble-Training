@@ -29,7 +29,8 @@ setup(
     # Added a console script entry point to be able to ROS2 run the node
     entry_points={
         'console_scripts': [
-            'xbox_controller = xbox_controller.xbox_controller:main'
+            'xbox_controller = xbox_controller.xbox_controller:main',
+            'xbox_logger = xbox_controller.xbox_logger:main'
         ],
     },
 )

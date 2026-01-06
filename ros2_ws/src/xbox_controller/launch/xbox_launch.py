@@ -20,4 +20,12 @@ def generate_launch_description():
         )
     )
 
+    launch_description.add_action(
+        Node(
+            package='xbox_controller',
+            executable='xbox_logger',
+            name='xbox_logger'
+        )
+    )
+
     return launch_description
