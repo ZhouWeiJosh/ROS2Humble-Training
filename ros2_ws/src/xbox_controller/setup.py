@@ -8,6 +8,7 @@ setup(
     name=package_name,
     version='0.0.0',
     packages=find_packages(exclude=['test']),
+    # Changed this for launch file
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
@@ -25,6 +26,7 @@ setup(
             'pytest',
         ],
     },
+    # Added a console script entry point to be able to ROS2 run the node
     entry_points={
         'console_scripts': [
             'xbox_controller = xbox_controller.xbox_controller:main'
