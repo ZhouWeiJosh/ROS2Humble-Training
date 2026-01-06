@@ -43,11 +43,10 @@ Your package should look something like this:
 │   └── <xbox_logger>.py
 └── test/
 ```
-2. Create a launch file within the `<package_name>/launch/` directory 
-<br>
+2. Create a launch file within the `<package_name>/launch/` directory \
 Hint: Use the [tutorials](https://docs.ros.org/en/humble/Tutorials/Intermediate/Launch/Creating-Launch-Files.html) as a base
-3. Test it! Use `ros2 launch <package_name> <launch_file_name>` ***in the*** `<package_name>/launch/` directory. Remember to build and source before testing.
-<br>
+3. Test it! Use `ros2 launch <package_name> <launch_file_name>` ***in the*** `<package_name>/launch/` directory. Remember to build and source before testing. \
+
 
 Now this works, but you can only luanch it if you are in the `<package_name>/launch/` directory so how do we make it so you can launch it in the workspace root? We need to edit the setup.py file so that ros2 knows it's there. 
 
