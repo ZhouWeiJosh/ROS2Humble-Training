@@ -15,4 +15,5 @@ test/test_flake8.py
 test/test_pep257.py
 xbox_controller/__init__.py
 xbox_controller/joy.py
+xbox_controller/xbox_logger.py
 xbox_controller/xbox_reader.py

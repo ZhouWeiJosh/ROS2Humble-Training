@@ -1,0 +1,24 @@
+[0.707s] Invoking command in '/home/rav3z/ROS2Humble-Training/ros2_ws/src/xbox_controller': PYTHONPATH=/home/rav3z/ROS2Humble-Training/ros2_ws/build/xbox_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/rav3z/ROS2Humble-Training/ros2_ws/install/xbox_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/xbox_controller build --build-base /home/rav3z/ROS2Humble-Training/ros2_ws/build/xbox_controller/build install --record /home/rav3z/ROS2Humble-Training/ros2_ws/build/xbox_controller/install.log --single-version-externally-managed install_data
+[0.935s] running egg_info
+[0.940s] writing ../../build/xbox_controller/xbox_controller.egg-info/PKG-INFO
+[0.940s] writing dependency_links to ../../build/xbox_controller/xbox_controller.egg-info/dependency_links.txt
+[0.941s] writing entry points to ../../build/xbox_controller/xbox_controller.egg-info/entry_points.txt
+[0.942s] writing requirements to ../../build/xbox_controller/xbox_controller.egg-info/requires.txt
+[0.942s] writing top-level names to ../../build/xbox_controller/xbox_controller.egg-info/top_level.txt
+[0.945s] reading manifest file '../../build/xbox_controller/xbox_controller.egg-info/SOURCES.txt'
+[0.945s] adding license file 'LICENSE'
+[0.945s] writing manifest file '../../build/xbox_controller/xbox_controller.egg-info/SOURCES.txt'
+[0.945s] running build
+[0.945s] running build_py
+[0.946s] running install
+[0.946s] running install_lib
+[0.947s] running install_data
+[0.947s] running install_egg_info
+[0.948s] removing '/home/rav3z/ROS2Humble-Training/ros2_ws/install/xbox_controller/lib/python3.10/site-packages/xbox_controller-0.0.0-py3.10.egg-info' (and everything under it)
+[0.949s] Copying ../../build/xbox_controller/xbox_controller.egg-info to /home/rav3z/ROS2Humble-Training/ros2_ws/install/xbox_controller/lib/python3.10/site-packages/xbox_controller-0.0.0-py3.10.egg-info
+[0.950s] running install_scripts
+[0.974s] Installing joy script to /home/rav3z/ROS2Humble-Training/ros2_ws/install/xbox_controller/lib/xbox_controller
+[0.974s] Installing xbox_logger script to /home/rav3z/ROS2Humble-Training/ros2_ws/install/xbox_controller/lib/xbox_controller
+[0.975s] Installing xbox_reader script to /home/rav3z/ROS2Humble-Training/ros2_ws/install/xbox_controller/lib/xbox_controller
+[0.976s] writing list of installed files to '/home/rav3z/ROS2Humble-Training/ros2_ws/build/xbox_controller/install.log'
+[1.000s] Invoked command in '/home/rav3z/ROS2Humble-Training/ros2_ws/src/xbox_controller' returned '0': PYTHONPATH=/home/rav3z/ROS2Humble-Training/ros2_ws/build/xbox_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/rav3z/ROS2Humble-Training/ros2_ws/install/xbox_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/xbox_controller build --build-base /home/rav3z/ROS2Humble-Training/ros2_ws/build/xbox_controller/build install --record /home/rav3z/ROS2Humble-Training/ros2_ws/build/xbox_controller/install.log --single-version-externally-managed install_data

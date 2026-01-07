@@ -26,6 +26,7 @@ setup(
         'console_scripts': [
         'joy = xbox_controller.joy:main',
         'xbox_reader = xbox_controller.xbox_reader:main',
+        'xbox_logger = xbox_controller.xbox_logger:main',
         ],
     },
 )
