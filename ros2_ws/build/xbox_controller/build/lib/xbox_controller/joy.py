@@ -16,6 +16,7 @@ class JoyNode(Node):
             10
         )
         self.subscription
+        self.get_logger().info('Joy Node has been started.')
 
     def joy_callback(self, msg):
         
