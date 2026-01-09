@@ -3,6 +3,13 @@
 ## Recap / Instructions
 So now you after finishing the Week 1 Exercise, you should have a ROS2 package that can be exectuted via `ros2 run <package_name> <executable_name>`. This Week 2 exercise will build off your Week 1 solution. You will modify your node from last week to publish button data to a topic instead of logging the left joystick. Then you will create another node that subscribes to that topic and does something. The very basics will be to print out a message whenever a button is pressed, but you are free to do anything you want. 
 
+
+## Git Stuff
+Do this week's exercise in another branch called `week2-<your_name>`. In order to do this follow these steps:
+1. Make sure you are on the same branch from Week 1 i.e (week1-<your_name>)
+- When you run `git branch` make sure the asterisk (*) is next to it
+2. Run `git checkout -b week2-<your_name>` to create a new branch that is based off your week 1 branch
+
 ## Steps to follow
 1. Create a publisher that publishes to `button_a_press` in node `__init__` 
 2. Change joy_callback to publish `button_a` data to `button_a_press`
