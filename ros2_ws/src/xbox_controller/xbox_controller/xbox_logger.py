@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
 import rclpy
 from rclpy.node import Node
-from sensor_msgs.msg import Joy
+from std_msgs.msg import Int32
 
-from std_msgs.msg import String
 
-class JoySubscriber(Node):
+class XboxLogger(Node):
 
     def __init__(self):
-        super().__init__('joy_subscriber')
+        super().__init__('xbox_logger')
         self.subscription = self.create_subscription(
-            Joy,
-            '/joy',
+            Int32,
+            'button_a_press',
             self.listener_callback,
             10
             )
@@ -19,17 +18,17 @@ class JoySubscriber(Node):
         
 
     def listener_callback(self, msg):
-        self.get_logger().info('X axes: "%s"' % msg.axes[0] + ' Y axes: "%s"' % msg.axes[1])
+        self.get_logger().info(f"Button A {msg.data}")
 
 
 def main(args=None):
     rclpy.init(args=args)
 
-    joy_subscriber = JoySubscriber()
+    xbox_logger = XboxLogger()
 
-    rclpy.spin(joy_subscriber)
+    rclpy.spin(xbox_logger)
 
-    joy_subscriber.destroy_node()
+    xbox_logger.destroy_node()
     rclpy.shutdown()
 
 if __name__ == '__main__':
