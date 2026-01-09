@@ -1,257 +1,96 @@
 # ROS2 Humble Training
 
 This repository contains a structured series of exercises designed to help the team
-learn **ROS 2 (Humble)** fundamentals.
+learn **ROS 2 (Humble)** fundamentals in a consistent, reproducible way.
+
 
 ---
 
-# Week 1 — ROS 2 Fundamentals
+## Prerequisites
 
-## 1. Sourcing the ROS 2 Environment
+Before starting any exercises in this repository, **you must complete the setup steps**
+outlined in the following Google Doc:
 
-Before using any ROS 2 commands, you must **source the ROS 2 environment**.
+https://docs.google.com/document/d/1S7wsK-0SaU3Z1uF1xBy5d9fthQ_KXShjgsPyszLhCok/edit?usp=sharing
 
+Specifically, complete the sections covering:
+- Ubuntu 22.04 installation
+- GitHub account setup and SSH keys
+- ROS 2 Humble installation
+
+If your environment is not set up correctly, you *will* encounter confusing errors later.
+Do not skip this step.
+
+---
+
+## Repository Philosophy
+
+- `main` branch contains **instructions only**
+- Each exercise is completed in **its own branch**
+- Your ROS 2 workspace lives **inside your exercise branch**
+- Nothing experimental or incomplete should be committed to `main`
+
+Think of `main` as the textbook, and your branches as the homework.
+
+---
+
+## GitHub Basics (Critical)
+
+Version control is non-optional in robotics. You will be expected to:
+- Create branches
+- Commit incremental progress
+- Push and pull changes
+- Resolve conflicts
+
+A solid beginner-friendly Git overview can be found here:
+https://youtu.be/Ala6PHlYjmw?si=1gQsiJoMZakCsRcw
+
+### How We Use Git in This Training
+
+- `main`
+  - Contains README files and written instructions
+  - Should never contain a ROS 2 workspace
+
+- `week*-name` branches
+  - Contain your actual ROS 2 code
+  - Example: `week1-Lawrence`, `week1-Jordan`
+
+Typical workflow:
+1. Checkout `main`
+2. Create a new branch for the exercise
+3. Do all work in that branch
+4. Commit frequently
+5. Push your branch to GitHub
+
+---
+
+## Common Git Commands
+
+Check the status of your working directory:
 ```bash
-source /opt/ros/humble/setup.bash
+git status
 ```
-
-Sourcing does the following:
-
-* Adds ROS 2 tools (`ros2`, `colcon`) to your PATH
-* Makes ROS 2 packages discoverable
-* Sets environment variables required for ROS communication
-
-### Making sourcing persistent
-
-To avoid manually sourcing every new terminal, add it to your `.bashrc`:
-
+List all local branches:
 ```bash
-echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+git branch
 ```
-
-Your `.bashrc` is executed **every time a new terminal opens**, so ROS 2 will
-automatically be available.
-
----
-
-## 2. Creating a ROS 2 Workspace
-
-A **workspace** is where you build and manage your own ROS 2 packages.
-
-Create a workspace with the standard ROS layout:
-
+Create and switch to a new branch for an exercise:
 ```bash
-mkdir -p ~/ros2_ws/src
+git checkout -b week1-<yourname>
 ```
-
-Explanation:
-
-* `mkdir` — make directory
-* `-p` — create parent directories if they do not exist
-* `src` — required directory where all ROS packages live
-
-Expected structure:
-
-```
-ros2_ws/
-└── src/
-```
-
----
-
-## 3. Conceptual Overview: Nodes and Topics
-
-### Nodes
-
-A **node** is a single executable that performs **one focused responsibility**.
-
-Examples:
-
-* Reading joystick input
-* Controlling motors
-* Publishing sensor data
-* Running navigation logic
-
-Key idea:
-
-> **One node = one job**
-
-Multiple nodes running together form a robotic system.
-
----
-
-### Topics
-
-A **topic** is a **named communication channel** used by nodes to exchange data.
-
-* Nodes **publish** messages to topics
-* Other nodes **subscribe** to those topics
-* Communication is asynchronous and loosely coupled
-
-Example topic:
-
-```
-/joy
-```
-
-* `joy_node` publishes joystick data
-* Your node subscribes to `/joy`
-* The nodes do not need to know about each other
-
-Key idea:
-
-> **Nodes do not talk to nodes — nodes talk to topics**
-
----
-
-### Nodes and Topics Together
-
-A ROS system looks like this:
-
-```
-[ joy_node ]  --publishes-->  /joy  --subscribed by-->  [ controller_node ]
-```
-
-This design allows nodes to be replaced, extended, or reused without changing the rest
-of the system.
-
----
-
-## 4. Creating a ROS 2 Package
-
-A **package** is the basic unit of build, install, and execution in ROS 2.
-
-### Creating a Python package
-
-From inside the `src` directory:
-
+Push your current branch to GitHub (first push sets upstream):
 ```bash
-ros2 pkg create \
-  --build-type ament_python \
-  --license Apache-2.0 \
-  <package_name>
+git push -u origin week1-<yourname>
 ```
-
-Example:
-
+Pull the latest changes from the remote branch you are tracking:
 ```bash
-ros2 pkg create --build-type ament_python --license Apache-2.0 py_joy
+git pull
 ```
-
----
-
-### Python package structure
-
-A typical Python ROS 2 package looks like:
-
-```
-py_joy/
-├── package.xml
-├── setup.py
-├── setup.cfg
-├── resource/
-│   └── py_joy
-├── py_joy/
-│   ├── __init__.py
-│   └── xbox_reader.py
-└── test/
-```
-
-Important files:
-
-* `package.xml` — package metadata and dependencies
-* `setup.py` — Python install and executable definitions
-* `py_joy/` — actual Python source code
-
----
-
-## 5. Building the Package
-
-From the workspace root (`ros2_ws`):
-
+Fetch updates from the remote repository without modifying your working tree:
 ```bash
-colcon build --packages-select py_joy
+git fetch
 ```
-
-This:
-
-* Builds only the selected package
-* Installs it into the `install/` directory
-* Makes it runnable with `ros2 run`
-
----
-
-## 6. Sourcing the Workspace
-
-After building, you must source the workspace:
-
+Switch between existing branches:
 ```bash
-source install/local_setup.bash
+git checkout main
 ```
-
-This step:
-
-* Makes newly built packages visible to ROS
-* Must be repeated after every rebuild
-* Must be run in each new terminal
-
----
-
-## 7. Running a Node
-
-Once built and sourced, run a node using:
-
-```bash
-ros2 run <package_name> <executable_name>
-```
-
-Example:
-
-```bash
-ros2 run py_joy reader
-```
-
-The executable name is defined in `setup.py` under `console_scripts`.
-
----
-
-## 8. Exercise 1 — Joystick Reader
-
-### Objective
-
-Practice:
-
-* Creating a ROS 2 package
-* Writing a Python node
-* Subscribing to a topic
-* Reading live hardware input
-
-### Task
-
-1. Clone this repository
-2. Create a package named `xbox_controller`
-3. Write a Python node that:
-
-   * Subscribes to the `/joy` topic
-   * Reads the **left joystick X and Y axes**
-   * Prints the values to the terminal
-
-### Hints
-
-* Start the joystick driver:
-
-  ```bash
-  ros2 run joy joy_node
-  ```
-* The message type is:
-
-  ```text
-  sensor_msgs/Joy
-  ```
-* Joystick axes are accessed using:
-
-  ```python
-  msg.axes[index]
-  ```
-
----
